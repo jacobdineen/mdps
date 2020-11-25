@@ -1,16 +1,17 @@
 import numpy as np
 import seaborn as sns
+import seaborn as sns
 
 
 class MDP:
     def __init__(self, T, R, discount):
         """
-		The constructor verifies that the inputs are valid and sets
-		corresponding variables in a MDP object
-		:param T: Transition function: |A| x |S| x |S'| array
-		:param R: Reward function: |A| x |S| array
-		:param discount: discount factor: scalar in [0,1)
-		"""
+        The constructor verifies that the inputs are valid and sets
+        corresponding variables in a MDP object
+        :param T: Transition function: |A| x |S| x |S'| array
+        :param R: Reward function: |A| x |S| array
+        :param discount: discount factor: scalar in [0,1)
+        """
         assert T.ndim == 3, "Invalid transition function: it should have 3 dimensions"
         self.nActions = T.shape[0]
         self.nStates = T.shape[1]
@@ -41,32 +42,32 @@ class MDP:
 
 def build_mazeMDP():
     """
-	adopted from https://cs.uwaterloo.ca/~ppoupart/teaching/cs885-spring18/assignments/asst1/TestRLmaze.py
-	Construct a simple maze MDP
+    adopted from https://cs.uwaterloo.ca/~ppoupart/teaching/cs885-spring18/assignments/asst1/TestRLmaze.py
+    Construct a simple maze MDP
 
-	Grid world layout:
+    Grid world layout:
 
-	---------------------
-	|  0 |  1 |  2 |  3 |
-	---------------------
-	|  4 |  5 |  6 |  7 |
-	---------------------
-	|  8 |  9 | 10 | 11 |
-	---------------------
-	| 12 | 13 | 14 | 15 |
-	---------------------
+    ---------------------
+    |  0 |  1 |  2 |  3 |
+    ---------------------
+    |  4 |  5 |  6 |  7 |
+    ---------------------
+    |  8 |  9 | 10 | 11 |
+    ---------------------
+    | 12 | 13 | 14 | 15 |
+    ---------------------
 
-	Goal state: 15
-	Bad state: 9
-	End state: 16
+    Goal state: 15
+    Bad state: 9
+    End state: 16
 
-	The end state is an absorbing state that the agent transitions
-	to after visiting the goal state.
+    The end state is an absorbing state that the agent transitions
+    to after visiting the goal state.
 
-	There are 17 states in total (including the end state)
-	and 4 actions (up, down, left, right).
-	:return: mdp
-	"""
+    There are 17 states in total (including the end state)
+    and 4 actions (up, down, left, right).
+    :return: mdp
+    """
     # Transition function: |A| x |S| x |S'| array
     T = np.zeros([4, 17, 17])
     a = 0.8
@@ -369,4 +370,3 @@ def print_policy(policy):
                 icon = "\x1b[0;30;41m" + icon + "\x1b[0m"
             string += icon
         print(string)
-
