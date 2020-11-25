@@ -1,5 +1,6 @@
 from MDP import build_mazeMDP, print_policy
 import numpy as np
+import numpy as np
 
 
 class DynamicProgramming:
